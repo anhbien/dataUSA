@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/anhbien/dataUSA/static/css/main.073c9b0a.css",
+    "main.js": "/anhbien/dataUSA/static/js/main.e227b88f.js",
+    "static/js/787.894a64a1.chunk.js": "/anhbien/dataUSA/static/js/787.894a64a1.chunk.js",
+    "index.html": "/anhbien/dataUSA/index.html",
+    "main.073c9b0a.css.map": "/anhbien/dataUSA/static/css/main.073c9b0a.css.map",
+    "main.e227b88f.js.map": "/anhbien/dataUSA/static/js/main.e227b88f.js.map",
+    "787.894a64a1.chunk.js.map": "/anhbien/dataUSA/static/js/787.894a64a1.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.e227b88f.js"
+  ]
+}
