@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import { css } from '@emotion/css'
+import Loader from './Loader';
 
 const cardStyle = css`
   grid-column-end: span 3;
@@ -97,7 +98,7 @@ function App() {
     return (selectedTopic !== '' ? value.topic === selectedTopic : true)
       && (selectedSubTopic !== '' ? value.subtopic === selectedSubTopic : true)
       && (selectedSource !== '' ? value.source_name === selectedSource : true)
-      && (element.name.toLowerCase().includes(searchTerm) || value.source_description.includes(searchTerm))
+      && (element.name.toLowerCase().includes(searchTerm) || (value.source_description ? value.source_description.includes(searchTerm) : true))
   }
 
   const getData = () => {
@@ -122,15 +123,15 @@ function App() {
       <div className='d-flex justify-content-between align-items-center mb-3'>
         <select className="form-select me-2" aria-label="Source filter" onChange={(event) => setSelectedSource(event?.target.value)}>
           <option defaultValue='' value=''>Select a source</option>
-          {sources.map(source => <option value={source}>{source}</option>)}
+          {sources.map((source, index) => <option value={source} key={index}>{source}</option>)}
         </select>
         <select className="form-select" aria-label="Topic filter" onChange={(event) => setSelectedTopic(event?.target.value)}>
           <option defaultValue='' value=''>Select a topic</option>
-          {topics.map(topic => <option value={topic}>{topic}</option>)}
+          {topics.map((topic, index) => <option value={topic} key={index}>{topic}</option>)}
         </select>
         <select className="form-select ms-2" aria-label="SubTopic filter" onChange={(event) => setSelectedSubTopic(event?.target.value)}>
           <option defaultValue='' value=''>Select a subtopic</option>
-          {subTopics.map(subTopic => <option value={subTopic}>{subTopic}</option>)}
+          {subTopics.map((subTopic, index) => <option value={subTopic} key={index}>{subTopic}</option>)}
         </select>
       </div>
       {getData().length > 0 ?
@@ -147,16 +148,17 @@ function App() {
                 </p>
               </div>
               <div className='card-footer'>
-                <a href={value.cubes[0].annotations.dataset_link} className="card-link float-end">View Source &raquo;</a>
+                <button onClick={() => window.open(value.cubes[0].annotations.dataset_link, '_blank')} className="btn btn-link float-end">View Source &raquo;</button>
               </div>
             </a>
           )
           }
         </div>
         :
-        <div className="alert alert-warning" role="alert">
-          No data found
-        </div>}
+        <div className='d-flex justify-content-center align-items-center my-5'>
+          <Loader />
+        </div>
+      }
 
     </div>
   ) : <></>;
