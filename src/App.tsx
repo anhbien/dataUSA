@@ -18,14 +18,6 @@ const cardGridStyle = css`
   gap: 2rem;
 `
 
-const subtitleStyle = css`
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-`
-
 function App() {
   const [displayData, setDisplayData] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
@@ -140,7 +132,7 @@ function App() {
             <a href={value.cubes[0].annotations.dataset_link} target='_blank' rel="noreferrer" className={`card  ${cardStyle}`} key={key}>
               <div className="card-body">
                 <h5 className="card-title">{value.name}</h5>
-                <h6 className={`card-subtitle mb-2 text-muted ${subtitleStyle}`}>{value.cubes[0].annotations.source_description}</h6>
+                <h6 className="card-subtitle mb-2 text-muted">{value.cubes[0].annotations.source_description}</h6>
                 <p className="card-text text-body">
                   <strong>Source Name: </strong>{value.cubes[0].annotations.source_name} <br />
                   <strong>Topic: </strong>{value.cubes[0].annotations.topic} <br />
