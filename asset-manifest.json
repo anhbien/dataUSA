@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/dataUSA/static/css/main.073c9b0a.css",
-    "main.js": "/dataUSA/static/js/main.060cffbc.js",
+    "main.js": "/dataUSA/static/js/main.4421a45c.js",
     "static/js/787.894a64a1.chunk.js": "/dataUSA/static/js/787.894a64a1.chunk.js",
     "index.html": "/dataUSA/index.html",
     "main.073c9b0a.css.map": "/dataUSA/static/css/main.073c9b0a.css.map",
-    "main.060cffbc.js.map": "/dataUSA/static/js/main.060cffbc.js.map",
+    "main.4421a45c.js.map": "/dataUSA/static/js/main.4421a45c.js.map",
     "787.894a64a1.chunk.js.map": "/dataUSA/static/js/787.894a64a1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.060cffbc.js"
+    "static/js/main.4421a45c.js"
   ]
 }
