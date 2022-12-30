@@ -97,7 +97,7 @@ function App() {
     return displayData.filter(dataFilter).sort(isSortAscending ? handleSortAscending : handleSortDescending)
   }
 
-  return displayData ? (
+  return (
     <div className='container mb-5'>
       <h1 className='my-4'>Data USA</h1>
       <div className='d-flex justify-content-between align-items-center mb-3'>
@@ -126,34 +126,39 @@ function App() {
           {subTopics.map((subTopic, index) => <option value={subTopic} key={index}>{subTopic}</option>)}
         </select>
       </div>
-      {getData().length > 0 ?
-        <div className={cardGridStyle} title="Open in a new tab">
-          {getData().map((value: any, key) =>
-            <a href={value.cubes[0].annotations.dataset_link} target='_blank' rel="noreferrer" className={`card  ${cardStyle}`} key={key}>
-              <div className="card-body">
-                <h5 className="card-title">{value.name}</h5>
-                <h6 className="card-subtitle mb-2 text-muted">{value.cubes[0].annotations.source_description}</h6>
-                <p className="card-text text-body">
-                  <strong>Source Name: </strong>{value.cubes[0].annotations.source_name} <br />
-                  <strong>Topic: </strong>{value.cubes[0].annotations.topic} <br />
-                  <strong>Subtopic: </strong>{value.cubes[0].annotations.subtopic}
-                </p>
-              </div>
-              <div className='card-footer'>
-                <button onClick={() => window.open(value.cubes[0].annotations.dataset_link, '_blank')} className="btn btn-link float-end">View Source &raquo;</button>
-              </div>
-            </a>
-          )
+      {displayData.length > 0 ?
+        <>
+          {getData().length > 0 ?
+            <div className={cardGridStyle} title="Open in a new tab">
+              {getData().map((value: any, key) =>
+                <a href={value.cubes[0].annotations.dataset_link} target='_blank' rel="noreferrer" className={`card  ${cardStyle}`} key={key}>
+                  <div className="card-body">
+                    <h5 className="card-title">{value.name}</h5>
+                    <h6 className="card-subtitle mb-2 text-muted">{value.cubes[0].annotations.source_description}</h6>
+                    <p className="card-text text-body">
+                      <strong>Source Name: </strong>{value.cubes[0].annotations.source_name} <br />
+                      <strong>Topic: </strong>{value.cubes[0].annotations.topic} <br />
+                      <strong>Subtopic: </strong>{value.cubes[0].annotations.subtopic}
+                    </p>
+                  </div>
+                  <div className='card-footer'>
+                    <button onClick={() => window.open(value.cubes[0].annotations.dataset_link, '_blank')} className="btn btn-link float-end">View Source &raquo;</button>
+                  </div>
+                </a>
+              )
+              }
+            </div>
+            :
+            <div className="alert alert-warning" role="alert">
+              No data found
+            </div>
           }
-        </div>
-        :
+        </> :
         <div className='d-flex justify-content-center align-items-center my-5'>
           <Loader />
-        </div>
-      }
-
+        </div>}
     </div>
-  ) : <></>;
+  );
 }
 
 export default App;
